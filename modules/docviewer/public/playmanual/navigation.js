@@ -58,6 +58,11 @@ $(document).ready(function(){
 	// Next link
 	var nextLink = $('.next a')
     if(nextLink && nextLink.size()) {
-        $('#gotoc').after('<li><a href="' + $(nextLink).attr('href') + '">Next: ' + $(nextLink).text() + '</a></li>')
+        $('#gotoc').after('<li><a href="' + $(nextLink).attr('href') + '">下一篇: ' + $(nextLink).text() + '</a></li>')
     }
+	//Previous link 
+	var previousLink = $('.previous a')
+	if(previousLink && previousLink.size()){
+		$('#gotoc').after('<li><a href="' + $(previousLink).attr('href') + '">上一篇: ' + $(previousLink).text() + '</a></li>')
+	}
 });

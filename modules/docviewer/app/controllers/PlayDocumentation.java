@@ -33,9 +33,9 @@ public class PlayDocumentation extends Controller {
     String docLangDir = (docLang != null && (!"en".equalsIgnoreCase(docLang) && !docLang.matches("en-.*")))
         ? "_" + docLang + "/" : "/";
 
-    File page = new File(Play.frameworkPath, "documentation/manual" + docLangDir + id + ".textile");
+    File page = new File(Play.applicationPath, "documentation/manual" + docLangDir + id + ".textile");
     if (!page.exists()) {
-      page = new File(Play.frameworkPath, "documentation/manual/" + id + ".textile");
+      page = new File(Play.applicationPath, "documentation/manual/" + id + ".textile");
     }
 
     if (module != null) {
@@ -113,10 +113,13 @@ public class PlayDocumentation extends Controller {
     String docLangDir = (docLang != null && (!"en".equalsIgnoreCase(docLang) && !docLang.matches("en-.*")))
         ? "_" + docLang + "/" : "/";
 
-    File page = new File(Play.frameworkPath,
+    File page = new File(Play.applicationPath,
         "documentation/manual" + docLangDir + "releases/" + (version != null ? version + "/" : "") + id + ".textile");
     if (!page.exists()) {
-      page = new File(Play.frameworkPath, "documentation/manual/" + "releases/" + id + ".textile");
+      page = new File(Play.applicationPath,"documentation/manual/" + "releases/" + (version != null ? version + "/" : "") + id + ".textile");
+      if(!page.exists()){
+      page = new File(Play.applicationPath, "documentation/manual/" + "releases/" + id + ".textile");
+      }
     }
 
     if (!page.exists()) {
